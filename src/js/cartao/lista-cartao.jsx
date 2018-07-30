@@ -19,7 +19,7 @@ class ListaCartao extends React.Component {
 
 		for (let k = 0; k < noticias.length; k++) {
 			aux.push(noticias[k]);
-			if(aux.length === 4) {
+			if(aux.length === this.props.qtdLinha) {
 				novaLista.push(aux);
 				aux = [];
 			}else if(k === noticias.length -1) {
@@ -27,11 +27,13 @@ class ListaCartao extends React.Component {
 			}
 		}
 
+		const tamanhoCol = `col m${this.props.tamanhoCol}`;
+
 		let ListaCartoes = (grupo) => {
 			return grupo.map((item, index)=>{
 				return (
-					<div key={index} className="col m3">
-						<Cartao />
+					<div key={index} className={tamanhoCol}>
+						<Cartao dados={item} />
 					</div>
 				);
 			});
